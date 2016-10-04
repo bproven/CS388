@@ -1,0 +1,26 @@
+Program Description:
+
+Class largeNumber is for finding largest numbers from given 10 integers.
+variable largest is initially 0, the variable count is for to keep track of how many numbers have been input and to determine when all 10 numbers have been processed. While statement runs until loop runs for 10 times. Number variable keeps tracks for the most recent number entered. int number = keyboard.nextInt(); statement stores recently entered variable.  count++ increases the counter variable every time. if(number>largest) statement checks if most recently entered a number is more than the value of the largest number. if so the recent number will be stored in largest variable and prints it. 
+
+
+Program Output:
+
+
+C:\A Ritesh\My College Work\CS388>javac largeNumber.java
+
+C:\A Ritesh\My College Work\CS388>java largeNumber
+
+Enter numbers to find Largest!
+Enter an integer(1): 100
+Enter an integer(2): 5000
+Enter an integer(3): 12
+Enter an integer(4): 453
+Enter an integer(5): 432
+Enter an integer(6): 194
+Enter an integer(7): 300
+Enter an integer(8): 9431
+Enter an integer(9): 624
+Enter an integer(10): 24
+================================
+The largest num is  9431
