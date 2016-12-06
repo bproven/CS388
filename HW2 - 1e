@@ -1,0 +1,116 @@
+import java.awt.*;
+import java.util.Formatter;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class BouncingBall extends JPanel implements MouseListener {
+  // Box height and width
+  int width;
+  int height;
+
+  // Ball Radius
+  float Ball_Radius = 40; 
+
+  // Center of Call
+  float X = Ball_Radius + 50;
+  float Y = Ball_Radius + 20;
+
+  // Direction
+  float BallSpeedX = 10;
+  float BallSpeedY = 10;
+
+  
+  public BouncingBall(){
+	  addMouseListener(this);
+  }
+  public void StartMoving() {
+
+    Thread thread = new Thread() {
+      public void run() {
+        while (true) {
+
+          width = getWidth();
+          height = getHeight();
+
+          X = X + BallSpeedX ;
+          Y = Y + BallSpeedY;
+          
+          //Check if the ball moves over the bounds
+          if (X - Ball_Radius < 0)
+          {
+            BallSpeedX = -BallSpeedX; 
+            X = Ball_Radius; 
+          } 
+          else if (X + Ball_Radius > width)
+          {
+            BallSpeedX = -BallSpeedX;
+            X = width - Ball_Radius;
+          }
+          
+          //Check if the ball moves over the bounds
+          if (Y - Ball_Radius < 0) {
+            BallSpeedY = -BallSpeedY;
+            Y = Ball_Radius;
+          } 
+          else if (Y + Ball_Radius > height)
+          {
+            BallSpeedY = -BallSpeedY;
+            Y = height - Ball_Radius;
+          }
+          
+          //Refresh the display
+          //Call back paintComponent()
+          repaint();
+          //Delay for timing control and give other threads a chance
+          try {
+            Thread.sleep(50);
+          } catch (InterruptedException ex) {
+          }
+
+        }
+      }
+    };
+    //Call back run()
+    thread.start();
+  }
+
+  public void paintComponent(Graphics g) {
+	//Paint background
+    super.paintComponent(g);
+    
+    //Draw the box
+    g.setColor(Color.WHITE);
+    g.fillRect(0, 0, width, height);
+    
+    //Draw the ball
+    g.setColor(Color.RED);
+    g.fillOval((int)(X-Ball_Radius), (int)(Y-Ball_Radius), (int)(2*Ball_Radius), (int)(2*Ball_Radius));
+    
+    //Display the ball's information
+    g.setColor(Color.BLUE);
+    g.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+    StringBuilder sb = new StringBuilder();
+    Formatter ftr = new Formatter(sb);
+    ftr.format("Ball: X = %3.0f, Y = %3.0f Speed=(%2.0f,%2.0f)", X, Y, BallSpeedX, BallSpeedY);
+    g.drawString(sb.toString(), 20, 30);
+  }//end of paintComponent method
+
+  public static void main(String[] args) {
+	//Main window
+    JFrame.setDefaultLookAndFeelDecorated(true);
+    JFrame frame = new JFrame("HW2 - Bouncing Ball");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(800, 500);
+    frame.setContentPane(new BouncingBall());
+    frame.setVisible(true);
+  }//End of main method
+  
+  public void mousePressed( MouseEvent e )
+  {
+	  StartMoving();
+  }
+  public void mouseExited( MouseEvent e ) {}
+  public void mouseClicked( MouseEvent e ) {}
+  public void mouseReleased( MouseEvent e ) {}
+  public void mouseEntered( MouseEvent e ) {} 
+}

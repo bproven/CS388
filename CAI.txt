@@ -1,0 +1,30 @@
+
+Program Description:
+
+This program required to produce random feedbacks to the user. It uses java.util.Random to generate random number for questions of multiplication questions and number between 1 to 4 where each number is associated with proper response. If the answer is correct, the responses are ”Very good!”, ”Excellent!”, ”Nice work!”, ”Keep up the good work!”. While the answer is wrong, the responses are “No. Please try again.”, ”Wrong. Try once more.”, “Don't give up!”, “No. Keep trying.” The program utilized the switch and if statement condition to determine the responses and the correct answer of the multiplication questions.
+
+
+Output:
+
+How much is 10 time 5: 2
+Wrong. Try once more.
+How much is 10 time 5: 50
+Keep up the good work!
+How much is 9 time 4: 39
+Don't give up!
+How much is 9 time 4: 36
+Very good!
+How much is 10 time 3: 30
+Very good!
+How much is 6 time 2: 24
+No. Keep trying.
+How much is 6 time 2: 12
+Excellent!
+How much is 2 time 10: 20
+Keep up the good work!
+How much is 1 time 7: 7
+Nice work!
+How much is 4 time 1: 4
+Nice work!
+How much is 6 time 3: 3
+Wrong. Try once more.
